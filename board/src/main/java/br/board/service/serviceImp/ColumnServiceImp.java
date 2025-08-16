@@ -29,5 +29,10 @@ public class ColumnServiceImp implements ColumnService{
     public void initializeColumns(String boardName) {
         db.columnInitialize(boardName);
     }
+
+    @Override
+    public void setPositionsOfColumns(List<ColumnBoard> columns, String nameOfNewColumn, int positionOfNewColumn) {
+        db.setColumnPosition(columns, nameOfNewColumn, positionOfNewColumn);
+    }
     
 }

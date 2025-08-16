@@ -15,4 +15,8 @@ public interface CardService {
     public List<Card> showAllCards();
 
     public List<Card> ShowCardsForColumn(String columnName);
+
+    public void changeColumnOfCard(String task, String columnToChange);
+
+    public void updateCardPositionInBlockOperation(String task);
 }

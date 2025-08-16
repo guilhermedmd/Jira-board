@@ -14,4 +14,6 @@ public interface ColumnService {
 
     public void initializeColumns(String boardName);
 
+    public void setPositionsOfColumns(List<ColumnBoard> columns, String nameOfNewColumn, int positionOfNewColumn);
+
 }

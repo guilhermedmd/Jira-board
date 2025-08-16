@@ -51,27 +51,30 @@ public class BlockCardDAO {
     public int getBlockId(String taskFromCard){
         int blockId = 0;
         int cardId = cardDao.getCardId(taskFromCard);
-        String sql = "select id_block from block_card b inner join card c on b.id_block = c.id_card where c.id_card = ?"+cardId;
+        System.out.println("id do card: "+cardId);
+        String sql = "select id_block from block_card b inner join card c on b.id_block = c.id_card where c.id_card = ?";
         try {
             Connection connection = DbConfig.getConnection();
             var statement = connection.prepareStatement(sql);
+            statement.setInt(1, cardId);
             statement.executeQuery();
             var resultSet = statement.getResultSet();
             if(resultSet.next()) blockId = resultSet.getInt("id_block");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("id do bloqueio"+blockId);
         return blockId;
     }
 
     public List<BlockCard> getBlockCard(String task){
-        int blockId = getBlockId(task);
+        int cardId = cardDao.getCardId(task);
         List<BlockCard> blockInfo = new ArrayList<>();
-        String sql = "select is_blocked, block_reason, unblock_reason from block_card where = ?";
+        String sql = "select b.is_blocked, b.block_reason, b.unblock_reason from block_card b inner join card c on b.id_block = c.id_block_fk where c.id_card = ?";
         try {
             Connection connection = DbConfig.getConnection();
             var statement = connection.prepareStatement(sql);
-            statement.setInt(1, blockId);
+            statement.setInt(1, cardId);
             statement.executeQuery();
             var resultSet = statement.getResultSet();
             while(resultSet.next()){

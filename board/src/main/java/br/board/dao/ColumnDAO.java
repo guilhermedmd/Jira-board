@@ -14,7 +14,7 @@ public class ColumnDAO {
     // colunas inicial, bloqueado e concluída
     public void columnInitialize(String boardName){
         int boardId = boardDao.getIdFromBoard(boardName);
-        String sql = "insert into column_board(name, position, type, id_board_fk) values(inicial, 1, inicial, ?), (Conluída, 2, concluida, ?), (Bloqueados, 3, bloq, ?)";
+        String sql = "insert into column_board(name, position, type, id_board_fk) values('inicial', 1, 'inicial', ?), ('Conluída', 2, 'concluida', ?), ('Bloqueados', 3, 'bloq', ?)";
 
         try {
             Connection connection = DbConfig.getConnection();
@@ -77,18 +77,19 @@ public class ColumnDAO {
 
     public int getIdFromColumn(String columnName){
         int columnId = 0;
-        String sql = "select id_column from column_board where name = "+columnName;
+        String sql = "select id_column from column_board where name = ?";
         try {
             Connection connection = DbConfig.getConnection();
             var statement = connection.prepareStatement(sql);
-            var resultSet = statement.getResultSet();
+            statement.setString(1, columnName);
             statement.executeQuery();
-
-            columnId = resultSet.getInt("id_column");
+            var resultSet = statement.getResultSet();
+            if(resultSet.next()) columnId = resultSet.getInt("id_column");
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("id da coluna que está retornando"+columnId);
         return columnId;
     }
 

@@ -28,5 +28,10 @@ public class Card {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "Card [task=" + task + ", description=" + description + "]";
+    }
+
     
 }

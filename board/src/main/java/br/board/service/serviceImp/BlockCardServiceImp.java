@@ -1,7 +1,6 @@
 package br.board.service.serviceImp;
 
 import br.board.dao.BlockCardDAO;
-import br.board.dao.BoardDAO;
 import br.board.model.BlockCard;
 import br.board.service.BlockCardService;
 
@@ -16,7 +15,12 @@ public class BlockCardServiceImp implements BlockCardService{
 
     @Override
     public void showBlockOfCard(String task) {
-        db.getBlockCard(task);
+        db.getBlockCard(task).forEach(b -> System.out.println(b));
+    }
+
+    @Override
+    public int initializeBlock() {
+        return db.blockInitialize(0);
     }
     
 }
