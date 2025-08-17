@@ -24,7 +24,6 @@ public class BlockCardDAO {
             var resultSet = statement.getGeneratedKeys();
             if(resultSet.next()){
                blockId = resultSet.getInt(1);
-                System.out.println("Coisa:"+blockId);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -51,7 +50,6 @@ public class BlockCardDAO {
     public int getBlockId(String taskFromCard){
         int blockId = 0;
         int cardId = cardDao.getCardId(taskFromCard);
-        System.out.println("id do card: "+cardId);
         String sql = "select id_block from block_card b inner join card c on b.id_block = c.id_card where c.id_card = ?";
         try {
             Connection connection = DbConfig.getConnection();
@@ -63,7 +61,6 @@ public class BlockCardDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("id do bloqueio"+blockId);
         return blockId;
     }
 

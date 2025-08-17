@@ -89,7 +89,6 @@ public class ColumnDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("id da coluna que está retornando"+columnId);
         return columnId;
     }
 
