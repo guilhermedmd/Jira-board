@@ -30,4 +30,8 @@ public class BoardController {
         String boardName = input.nextLine();
         service.deleteBoard(boardName);
     }
+
+    public void showBoards(){
+        service.showBoards().forEach(b -> System.out.println(b));
+    }
 }

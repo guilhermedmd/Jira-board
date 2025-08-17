@@ -1,6 +1,5 @@
 package br.board.controller;
 
-import java.util.List;
 import java.util.Scanner;
 
 import br.board.model.Card;
@@ -12,7 +11,7 @@ public class CardController {
     final CardService service = new CardServiceImp();
 
     public void createCard(int blockId){
-        System.out.println("Write the name of column that you want to insert the task");
+        System.out.println("Write the name of column that you want to insert the task:");
         String columnName = input.nextLine();
         System.out.println("Write task of the new card:");
         String task = input.nextLine();
@@ -36,10 +35,6 @@ public class CardController {
         service.deleteCard(task);
     }
 
-    public void showAllCards(){
-        service.showAllCards().forEach(c -> System.out.println(c));
-    }
-
     public void ShowCardsForColumn(){
         System.out.println("Write the name of the column:");
         String columnName = input.nextLine();
@@ -56,5 +51,11 @@ public class CardController {
 
     public void updateCardPositionInBlockOperation(String task){
         service.updateCardPositionInBlockOperation(task);
+    }
+
+    public void showCard(){
+        System.out.println("Write the task of card:");
+        String task = input.nextLine();
+        service.showCard(task).forEach(c -> System.out.println("Card [task=" + c.getTask() + ", description=" + c.getDescription() +", column="+c.getColumnName()+"]"));
     }
 }

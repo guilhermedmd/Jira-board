@@ -21,14 +21,7 @@ public class Main {
     String selectedBoard = null;
 
     do{
-        System.out.println("-----------------------");
-        System.out.println("0 - Exit");
-        System.out.println("1 - Boards");
-        System.out.println("2 - Columns");
-        System.out.println("3 - Cards");
-        System.out.println("4 - Blocks for cards");
-        System.out.println("-----------------------");
-
+        Menu.showInitialMenu();
         option = input.nextInt();
         switch (option) {
             case 0 -> System.exit(0);
@@ -43,7 +36,7 @@ public class Main {
                     }
                     case 2 -> selectedBoard = board.loadBoard();
                     case 3 -> board.deleteBoard();
-                    // implementar versão para mostrar os boards
+                    case 4 -> board.showBoards();
                     }
                 }while(option != 0);
             }
@@ -57,7 +50,6 @@ public class Main {
                     switch (option) {
                         case 1 -> column.createColumn(selectedBoard);
                         case 2 -> column.getColumns(selectedBoard);
-                        // precisa implementar
                         case 3 -> column.deleteColumn();
                     }
                 }while(option != 0);
@@ -76,7 +68,7 @@ public class Main {
                         case 3 -> card.deleteCard();
                         case 4 -> card.changeColumnOfCard();
                         case 5 -> card.ShowCardsForColumn();
-                        case 6 -> card.showAllCards();
+                        case 6 -> card.showCard();
                         }
                 }while(option != 0);
             }

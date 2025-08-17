@@ -15,7 +15,7 @@ public class BoardDAO {
         try {
             Connection connection = DbConfig.getConnection();
             var statement = connection.prepareStatement(sql);
-            statement.setString(1, newBoard.getName());
+            statement.setString(1, newBoard.getBoardName());
             statement.executeUpdate();
 
             System.out.println("New board save with sucessfull");
@@ -35,7 +35,7 @@ public class BoardDAO {
 
             while(resultSet.next()){
                 Board board = new Board();
-                board.setName(resultSet.getString("name"));
+                board.setBoardName(resultSet.getString("name"));
                 boards.add(board);
             }
                            

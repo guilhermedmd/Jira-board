@@ -1,26 +1,26 @@
 package br.board.model;
 
 public class Board {
-    private String name;
+    private String boardName;
 
     public Board() {
     }
 
     public Board(String name) {
-        this.name = name;
+        this.boardName = name;
     }
 
-    public String getName() {
-        return name;
+    public String getBoardName() {
+        return boardName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBoardName(String name) {
+        this.boardName = name;
     }
 
     @Override
     public String toString() {
-        return "Board [name=" + name + "]";
+        return "Board [name=" + boardName + "]";
     }
 
     

@@ -36,7 +36,7 @@ public class ColumnDAO {
             try {
                 Connection connection = DbConfig.getConnection();
                 var statement = connection.prepareStatement(sql);
-                statement.setString(1, newColumn.getNome());
+                statement.setString(1, newColumn.getColumnName());
                 statement.setInt(2, newColumn.getPosition());
                 statement.setString(3, newColumn.getType());
                 statement.setInt(4, boardId);
@@ -64,7 +64,7 @@ public class ColumnDAO {
             while(resultSet.next()){
                 ColumnBoard column = new ColumnBoard();
                 column.setId(resultSet.getInt("id_column"));
-                column.setNome(resultSet.getString("name"));
+                column.setColumnName(resultSet.getString("name"));
                 column.setPosition(resultSet.getInt("position"));
                 column.setType(resultSet.getString("type"));
                 columns.add(column);
@@ -93,30 +93,8 @@ public class ColumnDAO {
         return columnId;
     }
 
-    // public List<ColumnBoard> getColumnsNPosition(String boardName){
-    //     int boardId = boardDao.getIdFromBoard(boardName);
-    //     List<ColumnBoard> columns = new ArrayList<>();
-    //     String sql = "select name, position from column_board where id_board_fk = ?";
-    //     try {
-    //         Connection connection = DbConfig.getConnection();
-    //         var statement = connection.prepareStatement(sql);
-    //         statement.setInt(1, boardId);
-    //         statement.executeQuery();
-    //         var resultSet = statement.getResultSet();
-    //         while(resultSet.next()){
-    //             ColumnBoard column = new ColumnBoard();
-    //             column.setNome(resultSet.getString("name"));
-    //             column.setPosition(resultSet.getInt("position"));
-    //             columns.add(column);
-    //         }
-    //     } catch (SQLException e) {
-    //         e.printStackTrace();
-    //     }
-    //     return columns;
-    // }
-
     public void setColumnPosition(List<ColumnBoard> columnsNPositions, String columnNameToChange, int PositionToAdd){
-            columnsNPositions.stream().filter(c -> c.getPosition() >= PositionToAdd && (!c.getNome().equals(columnNameToChange))).forEach(c -> c.setPosition(c.getPosition()+1));
+            columnsNPositions.stream().filter(c -> c.getPosition() >= PositionToAdd && (!c.getColumnName().equals(columnNameToChange))).forEach(c -> c.setPosition(c.getPosition()+1));
 
             String sql = "update column_board set position = ? where id_column = ?";
             try {
@@ -131,6 +109,20 @@ public class ColumnDAO {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+    }
+
+    public void deleteColumn(String columnName){
+        int columnId = getIdFromColumn(columnName);
+        String sql = "delete from columnBoard where id_column = ?";
+
+        try {
+            Connection connection = DbConfig.getConnection();
+            var statement = connection.prepareStatement(sql);
+            statement.setInt(1, columnId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     

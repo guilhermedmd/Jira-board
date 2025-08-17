@@ -26,13 +26,23 @@ public class CardServiceImp implements CardService{
     }
 
     @Override
-    public List<Card> showAllCards() {
-       return db.getAllCards();
+    public List<Card> ShowCardsForColumn(String columnName) {
+        return db.getCardsForColumn(columnName);
     }
 
     @Override
-    public List<Card> ShowCardsForColumn(String columnName) {
-        return db.getCardsForColumn(columnName);
+    public void changeColumnOfCard(String task, String columnToChange) {
+        db.changeCardColumn(task, columnToChange);
+    }
+
+    @Override
+    public void updateCardPositionInBlockOperation(String task) {
+        db.updateCardPositionInBlockOperation(task);
+    }
+
+    @Override
+    public List<Card> showCard(String task) {
+        return db.getCard(task);
     }
     
 }

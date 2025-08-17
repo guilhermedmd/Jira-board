@@ -80,10 +80,10 @@ public class CardDAO {
         }
 
     }
-
+    // deve ser chamado após a operação de bloqueio ou desbloqueio
     public void updateCardPositionInBlockOperation(String task){
         int cardId = getCardId(task);
-        String sql = "pcr_change_column_in_block(?)";
+        String sql = "call pcr_change_column_in_block(?)";
         try {
             Connection connection = DbConfig.getConnection();
             var statement = connection.prepareStatement(sql);
@@ -108,28 +108,6 @@ public class CardDAO {
         }
     }
 
-    public List<Card> getAllCards(){
-        List<Card> cards = new ArrayList<>();
-        String sql = "select task, description, creation_date from card";
-        try {
-            Connection connection = DbConfig.getConnection();
-            var statement = connection.createStatement();
-            statement.executeQuery(sql);
-            var resultSet = statement.getResultSet();
-
-            while(resultSet.next()){
-                Card card = new Card();
-                card.setTask(resultSet.getString("task"));
-                card.setDescription(resultSet.getString("description"));
-                cards.add(card);
-            }
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return cards;
-    }
-
     public List<Card> getCardsForColumn(String columnName){
         int columnId = columnDao.getIdFromColumn(columnName);
         List<Card> cardsForColumn = new ArrayList<>();
@@ -152,5 +130,28 @@ public class CardDAO {
             e.printStackTrace();
         }
         return cardsForColumn;
+    }
+
+    public List<Card> getCard(String task){
+        int cardId = getCardId(task);
+        List<Card> cardInfo = new ArrayList<>();
+        String sql = "select c.task, c.description, cb.name from card c inner join column_board cb on c.id_column_fk = cb.id_column where id_card = ?";
+        try {
+            Connection connection = DbConfig.getConnection();
+            var statement = connection.prepareStatement(sql);
+            statement.setInt(1, cardId);
+            statement.executeQuery();
+            var resultSet = statement.getResultSet();
+            while(resultSet.next()){
+                Card card = new Card();                
+                card.setTask(resultSet.getString("task"));
+                card.setDescription(resultSet.getString("description"));
+                card.setColumnName(resultSet.getString( "name"));
+                cardInfo.add(card);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cardInfo;
     }
 }

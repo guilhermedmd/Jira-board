@@ -16,7 +16,8 @@ public class ColumnController {
         String columnName = input.nextLine();
         System.out.println("Write the position of the new column:");
         int columnPosition = input.nextInt();
-        // erro do enter entrar junto
+        // input daqui serve para que o enter do input da position não entre no type
+        input.nextLine();
         System.out.println("Write the type of the column:");
         String type = input.nextLine();
         ColumnBoard newColumn = new ColumnBoard(columnName, type, columnPosition);
@@ -31,7 +32,9 @@ public class ColumnController {
     }
 
     public void deleteColumn(){
-        // Para fazer
+        System.out.println("Write the name of the column that you want to delete:");
+        String columnName = input.nextLine();
+        service.deleteColumn(columnName);
     }
     public void initializeColumns(String boardName){
         service.initializeColumns(boardName);

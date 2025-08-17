@@ -12,11 +12,11 @@ public interface CardService {
 
     public void deleteCard(String task);
 
-    public List<Card> showAllCards();
-
     public List<Card> ShowCardsForColumn(String columnName);
 
     public void changeColumnOfCard(String task, String columnToChange);
 
     public void updateCardPositionInBlockOperation(String task);
+
+    public List<Card> showCard(String task);
 }

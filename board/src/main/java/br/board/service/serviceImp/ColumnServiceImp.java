@@ -21,8 +21,7 @@ public class ColumnServiceImp implements ColumnService{
 
     @Override
     public void deleteColumn(String columnName) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteColumn'");
+        db.deleteColumn(columnName);
     }
 
     @Override

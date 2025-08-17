@@ -1,13 +1,13 @@
 package br.board.model;
 
 public class ColumnBoard {
-    private String nome, type;
+    private String columnName, type;
     private int position, id;
 
     
     
     public ColumnBoard(String nome, int position) {
-        this.nome = nome;
+        this.columnName = nome;
         this.position = position;
     }
 
@@ -15,19 +15,19 @@ public class ColumnBoard {
     }
 
     public ColumnBoard(String nome, String type, int position) {
-        this.nome = nome;
+        this.columnName = nome;
         this.type = type;
         this.position = position;
     }
 
     
 
-    public String getNome() {
-        return nome;
+    public String getColumnName() {
+        return columnName;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setColumnName(String nome) {
+        this.columnName = nome;
     }
 
     public String getType() {
@@ -48,7 +48,7 @@ public class ColumnBoard {
 
     @Override
     public String toString() {
-        return "ColumnBoard [nome=" + nome + ", type=" + type + ", position=" + position + "]";
+        return "ColumnBoard [nome=" + columnName + ", type=" + type + ", position=" + position + "]";
     }
 
     public int getId() {
