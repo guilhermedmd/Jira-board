@@ -47,5 +47,11 @@ e posteriormente o desbloqueio.
 
 ## Tecnologias utilizadas
 O Jira Board foi desenvolvido em Java utilizando Maven para gerenciamento de dependências e MySQL para a produção do banco de dados
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" />
+<div align="center">
+<img height= "70" width="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" />
+<img  height= "70" width="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg" />
+<img  height= "70" width="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" />
+</div>    
+
+          
           
