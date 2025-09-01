@@ -16,7 +16,7 @@ Ao criar um novo board, por padrão ele irá possui as seguintes colunas de tare
 
 ### Cards de Tarefas
 Ao criar cards de tarefas você pode atribuí-los as colunas, conforme sua vontade. Os cards de tarefas também podem ser bloqueados, ou seja, 
-isso é útil, por exemplo, quando há a necessidade de adiar uma tarefa, vale lembrar que é necessário registrar o motivo do bloqueio da tarefa
+isso é útil, por exemplo, quando há a necessidade de adiar uma tarefa. Vale lembrar que é necessário registrar o motivo do bloqueio da tarefa
 e posteriormente o desbloqueio.
 
 ## Funcionalidades 
