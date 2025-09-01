@@ -6,7 +6,7 @@ Esse é o repositório do Jira Board, um board onde você pode adicionar tarefas
 ## O que é?
 Um Jira Board é um board de organização de tarefas que pode ser utilizado de forma individual ou em equipe, 
 nele as tarefas, representadas por cards, são divididas em colunas, essas colunas podem ser utilizadas de infinitas formas diferentes para melhor organização das atividades, 
-e além disso, elas podem ser personalizadas de acordo com a vontade do usuário, o que abre um leque de possbilidades.
+e além disso, elas podem ser personalizadas e posicionadas de acordo com a vontade do usuário, o que abre um leque de possbilidades.
 
 ## Como funciona?
 Ao criar um novo board, por padrão ele irá possui as seguintes colunas de tarefas: 
